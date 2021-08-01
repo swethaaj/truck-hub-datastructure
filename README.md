@@ -86,12 +86,12 @@ The above problem is solved using TRUCKHUB APP.
 
 
 
-##Input to Application:
+# Input to Application:
 	
 -	The Application takes in the input CSV file (`Mobile_Food_Facility_Permit_filtered.csv`) 
 	and loads the data to the in memory H2 Database which is then used later for search services.
 	
-#Configuration Details:
+# Configuration Details:
 
 	APPLICATION.PROPERTIES
 	
@@ -112,7 +112,7 @@ The above problem is solved using TRUCKHUB APP.
 -	Port(9090), Input File Location, H2 DB are all configurable parameters
 
 
-#REST SERVICES:
+# REST SERVICES:
 
 -	load()			: API to load the data from CSV file to H2 DB.
 
@@ -125,7 +125,7 @@ The above problem is solved using TRUCKHUB APP.
 -	getByLocationIdAndTruckType()	:Enhancement which can be done later.
 
 - 
-#Endpoint Details:
+# Endpoint Details:
 	
 -	`http://localhost:9090`  To Access Application
 
@@ -142,7 +142,7 @@ The above problem is solved using TRUCKHUB APP.
 -	`http://localhost:9090/truckhub/truckInfo/block/{block}`   Service to get the Truck Info by Block
 
 
-#Steps to Run the Application:
+# Steps to Run the Application:
 
 -	Starting point of the Application is `TruckHubSpringBootApp.java` 
 	Run -> RunAs -> JavaApplication will bring up the
@@ -181,7 +181,9 @@ The above problem is solved using TRUCKHUB APP.
 -	All the JUint test files are in the respective test files.
 
 
+
 	Package: src.main.resources
+	
 	
 -	application.properties  : File used to configuration details
 
@@ -193,7 +195,7 @@ The above problem is solved using TRUCKHUB APP.
 
 	
 
-#Enhancements:
+# Enhancements:
 	
 -	Since the H2 Database is just IN memory Data base, its high volatile, as we should be using 
 	any Relational or Non Sql Databases to store the Data.
