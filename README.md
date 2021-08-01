@@ -63,7 +63,7 @@ You are welcome to use your unit testing framework of choice to validate the in-
 Good luck! Please send a link to your solution on Github back to us at least 12 hours before your interview so we can review it before we speak.
 
 
-## **************** IMPLEMENTATION DETAILS: *******************
+## 			**************** IMPLEMENTATION DETAILS: *******************
 
 The above problem is solved using TRUCKHUB APP. 
 
@@ -104,9 +104,10 @@ The above problem is solved using TRUCKHUB APP.
 
 
 -   (spring.h2.console.enabled=true)
-	(spring.h2.console.path=/h2-console)
+    (spring.h2.console.path=/h2-console)
 	The H2 console is ENABLED for this APP by Default so the records can be Viewed at `http://localhost:9090/h2-console`
     after the Load().
+    User name = sa and password = password
 	
 	
 -	Port(9090), Input File Location, H2 DB are all configurable parameters
@@ -130,7 +131,7 @@ The above problem is solved using TRUCKHUB APP.
 -	`http://localhost:9090`  To Access Application
 
 
--	`http://localhost:9090/h2-console`  To Access H2 Console
+-	`http://localhost:9090/h2-console`  To Access H2 Console , username=sa, password=password
 
 
 -	`http://localhost:9090/truckhub/truckInfo/load`  Load Service to load the data from CSV file to H2 database
