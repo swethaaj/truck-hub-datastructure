@@ -63,7 +63,7 @@ You are welcome to use your unit testing framework of choice to validate the in-
 Good luck! Please send a link to your solution on Github back to us at least 12 hours before your interview so we can review it before we speak.
 
 
-### IMPLEMENTATION DETAILS:
+## IMPLEMENTATION DETAILS:
 
 The above problem is solved using TRUCKHUB APP. 
 
