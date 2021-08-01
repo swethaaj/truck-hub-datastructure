@@ -177,13 +177,13 @@ The above problem is solved using TRUCKHUB APP.
 -	TruckInfo.java	is the Entity File for the each Truck.
 
 
-	# Package: src.test.java
+	Package: src.test.java
 	
 -	All the JUint test files are in the respective test files.
 
 
 
-	# Package: src.main.resources
+	Package: src.main.resources
 	
 	
 -	application.properties  : File used to configuration details
@@ -206,7 +206,7 @@ The above problem is solved using TRUCKHUB APP.
 -	Select count(*) from TRUCK_INFO;	- 628 rows
 
 
-	POSTMAN:
+# POSTMAN:
 	
 # Service:load()
 	
