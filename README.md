@@ -155,7 +155,7 @@ The above problem is solved using TRUCKHUB APP.
 
 # Details about the APP implementation:
 
-	Package: src.main.java
+	# Package: src.main.java
 	
 -	Starting point to the SpringBoot App is through @SpringBootApplication(TruckHubSpringBootApp.java)
 
@@ -177,13 +177,13 @@ The above problem is solved using TRUCKHUB APP.
 -	TruckInfo.java	is the Entity File for the each Truck.
 
 
-	Package: src.test.java
+	# Package: src.test.java
 	
 -	All the JUint test files are in the respective test files.
 
 
 
-	Package: src.main.resources
+	# Package: src.main.resources
 	
 	
 -	application.properties  : File used to configuration details
@@ -196,6 +196,78 @@ The above problem is solved using TRUCKHUB APP.
 
 	
 
+# Test cases using local host or postman:
+
+	Once the Application is loaded:
+-	http://localhost:9090/h2-console
+	
+-	Select * from TRUCK_INFO;  - brings up all the data in the console
+
+-	Select count(*) from TRUCK_INFO;	- 628 rows
+
+
+	POSTMAN:
+	
+# Service:load()
+	
+-	INPUT: http://localhost:9090/truckhub/truckInfo/load
+
+# Service:getByID()
+	
+-	Input:	GET
+		http://localhost:9090/truckhub/truckInfo/locationId/1524388
+
+	
+-	Output:
+		{"locationid":"1524388","Applicant":"Flavors of Africa","FacilityType":"Truck","LocationDescription":"MISSION ST: SHAW ALY to ANTHONY ST (543 - 586)","Address":"555 MISSION ST","blocklot":"3721120","block":"3721","lot":"120","permit":"21MFF-00068","Status":"APPROVED","FoodItems":"Meat and vegi rice bowls: meat and vegi salad bowls: meat and vegi wraps: drinks and juices.","Location":"(37.78844615690132, -122.3986412420388)","ZipCodes":null,"location":"(37.78844615690132, -122.3986412420388)","address":"555 MISSION ST","status":"APPROVED","foodItems":"Meat and vegi rice bowls: meat and vegi salad bowls: meat and vegi wraps: drinks and juices.","facilityType":"Truck","applicant":"Flavors of Africa","zipCodes":null,"locationDescription":"MISSION ST: SHAW ALY to ANTHONY ST (543 - 586)"}
+
+
+# Service: getByBlock()
+
+-	Input:	GET
+		http://localhost:9090/truckhub/truckInfo/block/3721
+
+-	Output:
+		[{"locationid":"1524388","Applicant":"Flavors of Africa","FacilityType":"Truck","LocationDescription":"MISSION ST: SHAW ALY to ANTHONY ST (543 - 586)","Address":"555 MISSION ST","blocklot":"3721120","block":"3721","lot":"120","permit":"21MFF-00068","Status":"APPROVED","FoodItems":"Meat and vegi rice bowls: meat and vegi salad bowls: meat and vegi wraps: drinks and juices.","Location":"(37.78844615690132, -122.3986412420388)","ZipCodes":null,"location":"(37.78844615690132, -122.3986412420388)","address":"555 MISSION ST","status":"APPROVED","foodItems":"Meat and vegi rice bowls: meat and vegi salad bowls: meat and vegi wraps: drinks and juices.","facilityType":"Truck","applicant":"Flavors of Africa","zipCodes":null,"locationDescription":"MISSION ST: SHAW ALY to ANTHONY ST (543 - 586)"},{"locationid":"1408986","Applicant":"MOMO INNOVATION LLC","FacilityType":"Truck","LocationDescription":"MISSION ST: SHAW ALY to ANTHONY ST (543 - 586)","Address":"555 MISSION ST","blocklot":"3721120","block":"3721","lot":"120","permit":"19MFF-00131","Status":"APPROVED","FoodItems":"Noodles","Location":"(37.78844615690132, -122.3986412420388)","ZipCodes":null,"location":"(37.78844615690132, -122.3986412420388)","address":"555 MISSION ST","status":"APPROVED","foodItems":"Noodles","facilityType":"Truck","applicant":"MOMO INNOVATION LLC","zipCodes":null,"locationDescription":"MISSION ST: SHAW ALY to ANTHONY ST (543 - 586)"},{"locationid":"1534033","Applicant":"Off the Grid Services, LLC","FacilityType":"","LocationDescription":"MINNA ST: SHAW ALY to 02ND ST (44 - 99)","Address":"65 MINNA ST","blocklot":"3721124","block":"3721","lot":"124","permit":"21MFF-00073","Status":"REQUESTED","FoodItems":"N/A","Location":"(37.7879095795372, -122.39836076940526)","ZipCodes":null,"location":"(37.7879095795372, -122.39836076940526)","address":"65 MINNA ST","status":"REQUESTED","foodItems":"N/A","facilityType":"","applicant":"Off the Grid Services, LLC","zipCodes":null,"locationDescription":"MINNA ST: SHAW ALY to 02ND ST (44 - 99)"},{"locationid":"1509790","Applicant":"Plaza Garibaldy","FacilityType":"Truck","LocationDescription":"HOWARD ST: 01ST ST to MALDEN ALY (500 - 589)","Address":"540 HOWARD ST","blocklot":"3721015","block":"3721","lot":"15","permit":"21MFF-00013","Status":"APPROVED","FoodItems":"Tacos: burritos: quesadillas","Location":"(37.78795495968584, -122.39723654373122)","ZipCodes":null,"location":"(37.78795495968584, -122.39723654373122)","address":"540 HOWARD ST","status":"APPROVED","foodItems":"Tacos: burritos: quesadillas","facilityType":"Truck","applicant":"Plaza Garibaldy","zipCodes":null,"locationDescription":"HOWARD ST: 01ST ST to MALDEN ALY (500 - 589)"},{"locationid":"1535610","Applicant":"Wu Wei LLC dba MoBowl","FacilityType":"Truck","LocationDescription":"HOWARD ST: 01ST ST to MALDEN ALY (500 - 589)","Address":"500 HOWARD ST","blocklot":"3721011","block":"3721","lot":"11","permit":"21MFF-00076","Status":"APPROVED","FoodItems":"Various types of meat: veggie: and seafood bowls.","Location":"(0.0, 0.0)","ZipCodes":"","location":"(0.0, 0.0)","address":"500 HOWARD ST","status":"APPROVED","foodItems":"Various types of meat: veggie: and seafood bowls.","facilityType":"Truck","applicant":"Wu Wei LLC dba MoBowl","zipCodes":"","locationDescription":"HOWARD ST: 01ST ST to MALDEN ALY (500 - 589)"},{"locationid":"1367290","Applicant":"Star Taco","FacilityType":"","LocationDescription":"HOWARD ST: MALDEN ALY to 02ND ST (574 - 599)","Address":"580 HOWARD ST","blocklot":"3721092","block":"3721","lot":"92","permit":"19MFF-00128","Status":"REQUESTED","FoodItems":"Mexican Food","Location":"(37.7873042488646, -122.39803725191237)","ZipCodes":null,"location":"(37.7873042488646, -122.39803725191237)","address":"580 HOWARD ST","status":"REQUESTED","foodItems":"Mexican Food","facilityType":"","applicant":"Star Taco","zipCodes":null,"locationDescription":"HOWARD ST: MALDEN ALY to 02ND ST (574 - 599)"},{"locationid":"1447794","Applicant":"Street Meet","FacilityType":"Truck","LocationDescription":"HOWARD ST: 01ST ST to MALDEN ALY (500 - 589)","Address":"564 HOWARD ST","blocklot":"3721019","block":"3721","lot":"19","permit":"20MFF-00007","Status":"REQUESTED","FoodItems":"Tortas: Burritos: Tacos: Churros: Nachos: Asada Fries","Location":"(37.787539893467496, -122.39772670915164)","ZipCodes":null,"location":"(37.787539893467496, -122.39772670915164)","address":"564 HOWARD ST","status":"REQUESTED","foodItems":"Tortas: Burritos: Tacos: Churros: Nachos: Asada Fries","facilityType":"Truck","applicant":"Street Meet","zipCodes":null,"locationDescription":"HOWARD ST: 01ST ST to MALDEN ALY (500 - 589)"}]
+
+
+# Service: addbyTruckInfo()
+
+-	INPUT: POST
+		http://localhost:9090/truckhub/truckInfo/add
+		RequestBody - JSON
+
+		{
+    		"locationid": "222",
+    		"Applicant": "Flavors of Africa",
+    		"FacilityType": "Truck",
+    		"LocationDescription": "MISSION ST: SHAW ALY to ANTHONY ST (543 - 586)",
+    		"Address": "560 MISSION ST",
+    		"blocklot": "3708095",
+    		"block": "3708",
+    		"lot": "95",
+    		"permit": "21MFF-00068",
+    		"Status": "APPROVED",
+    		"FoodItems": "Meat and vegi rice bowls: meat and vegi salad bowls: meat and vegi wraps: drinks and juices.",
+   		 "Location": "(37.78886471534304, -122.39935935136297)",
+   		 "ZipCodes": null,
+   		 "location": "(37.78886471534304, -122.39935935136297)",
+   		 "address": "560 MISSION ST",
+   		 "status": "APPROVED",
+   		 "facilityType": "Truck",
+   		 "foodItems": "Meat and vegi rice bowls: meat and vegi salad bowls: meat and vegi wraps: drinks and juices.",
+   		 "applicant": "Flavors of Africa",
+  		  "zipCodes": null,
+  		  "locationDescription": "MISSION ST: SHAW ALY to ANTHONY ST (543 - 586)"
+		}
+
+
+-	OUTPUT:
+		222
+		
+		
+		
+		
 # Enhancements:
 	
 -	Since the H2 Database is just IN memory Data base, its high volatile, as we should be using 
