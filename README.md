@@ -71,15 +71,16 @@ The above problem is solved using TRUCKHUB APP.
 -	The EndPoint URL to access the Application when application is up: `http://localhost:9090/`.
 
 
--	Spring Boot is used as its light weight and comes with its own MVC controller which is used to deploy the application.
+-	Application uses Spring Boot as its light weight and comes with its own MVC controller which is used to deploy the application.
 -	H2 Database is used for in memory Database as it supports large data records and comes with its own console.
 -	JPA is used as it takes care of mapping from data source to Java Objects.
 -	Spring Batch process is used to load the data in chunks, as data can be large.
 -	All the above are added as part of Maven dependencies in pom.xml file.
 
 
--	The input file provided is been filtered after data Analysis and the unwanted columns which are not relevant 
-	to user are removed and the data is saved to `Mobile_Food_Facility_Permit_filtered.csv` to be used by the Application.
+-	The input file provided is been filtered after data Analysis and the unwanted columns which might not be relevant 
+	to user(this needed more clarification on what exact columns the user might use)
+	are removed and the data is saved to `Mobile_Food_Facility_Permit_filtered.csv` to be used by the Application.
 -	Rest Services are created for each feature.
 -	Test cases are written in Junits to test the API.
 -	Integration testing is performed using local host and Postman to test the REST services.
@@ -157,11 +158,11 @@ The above problem is solved using TRUCKHUB APP.
 
 	# Package: src.main.java
 	
--	Starting point to the SpringBoot App is through @SpringBootApplication(TruckHubSpringBootApp.java)
+-	Starting point to the SpringBoot App is through @SpringBootApplication(TruckHubSpringBootApp.java).This java file has a main method which will be called as starting 	         point.
 
 
 -	SpringBatchConfig.java is a configuration file used for Bean creation for the Batch process.
-	It  Creates the JOB, FileItemReader , and the LineMapper Beans required for the Spring Batch Process.
+	It  Creates the JOB, FileItemReader , and the LineMapper Beans required for the Spring Batch Process. These beans are later used by JobLauncher in the controller file to 	launch the Batch Process Job.
 	
 
 -	DbWriter.java is used to write to the H2 Db and the Processor.java is used to process any data chnages needed
@@ -210,7 +211,7 @@ The above problem is solved using TRUCKHUB APP.
 	
 # Service:load()
 	
--	INPUT: http://localhost:9090/truckhub/truckInfo/load
+-	INPUT: http://localhost:9090/truckhub/truckInfo/load   Not needed to run explicilty as this service is Enabled by default by application
 
 # Service:getByID()
 	
@@ -268,16 +269,19 @@ The above problem is solved using TRUCKHUB APP.
 		
 		
 		
-# Enhancements:
+# Enhancements/Chnages that could be done:
 	
 -	Since the H2 Database is just IN memory Data base, its high volatile, as we should be using 
 	any Relational or Non Sql Databases to store the Data.
 	
 	
--	Python script or some other way to initially clean the CSV file automatically.
+-	Python script or some other way to initially clean the CSV file automatically.Get the clarifications  on the exact columsn data the user might need and use that as part 	of Application
 
 
--	Get the Exact Columns requirements from the User for the USER Display and only use those as part of Entity creation.
+-	Add more test cases which could be integration test cases, which takes in CSV file as input and runs the services, no need to use post man in that case.
+
+
+- 	
 
 
 	
