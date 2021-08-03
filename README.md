@@ -276,7 +276,22 @@ The above problem is solved using TRUCKHUB Application.
 - 	Add the security features such as tructkeyStore, AAF( Authentication Implementation) for the Clients to use this.
 	
 
--	Add the k8 implementation to deploy it onto k8 klusters etc.
+-	Deploying it in containers(Kubernetes/docker image) for security purposes.
+
+
+-	Have a data base for the storing the records especially the add operation which does add it to the Map memory but will be lost when the application goes down.
+	
+	
+
+# Things I would have liked to clarify if I had gotten a chance
+	
+-	As mentioned above specific details that clients would like to see as part of response.
+	
+	
+-	Get more clarifications on the data and the mapping relationship.
+	
+	
+
 	
 	
 
