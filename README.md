@@ -65,9 +65,9 @@ Good luck! Please send a link to your solution on Github back to us at least 12 
 
 ## 			**************** IMPLEMENTATION DETAILS: *******************
 
-The above problem is solved using TRUCKHUB APP. 
+The above problem is solved using TRUCKHUB Application. 
 
--	TRUCKHUB is an APP implemented using Java in SpringBoot Framework.
+-	TRUCKHUB is an Application implemented using Java in SpringBoot Framework.
 -	The EndPoint URL to access the Application when application is up: `http://localhost:9090/`.
 
 
