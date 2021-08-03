@@ -126,7 +126,7 @@ The above problem is solved using TRUCKHUB Application.
 -	`http://localhost:9090`  To Access Application
 
 
--	`http://localhost:9090/truckhub/truckInfo/load`  Load Service to load the data from CSV file to H2 database
+-	`http://localhost:9090/truckhub/truckInfo/load`  Load Service to load the data from CSV file and stores it in internal memory datastructures.
 
 
 -	`http://localhost:9090/truckhub/truckInfo/locationId/{id}`   Service to get the Truck Info by Location ID
