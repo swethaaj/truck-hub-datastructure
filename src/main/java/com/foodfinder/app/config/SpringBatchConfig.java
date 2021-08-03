@@ -66,8 +66,12 @@ public class SpringBatchConfig{
 		DelimitedLineTokenizer delimitedLineTokenizer = new DelimitedLineTokenizer();
 		delimitedLineTokenizer.setDelimiter(",");
 		delimitedLineTokenizer.setStrict(false);
-		delimitedLineTokenizer.setNames(new String[]{"locationid", "Applicant", "FacilityType", 
-				"LocationDescription", "Address", "blocklot", "block", "lot", "permit", "Status", "FoodItems", "Location", "ZipCodes"});
+		delimitedLineTokenizer.setNames(new String[]{"locationid", "Applicant", "FacilityType", "cnn",
+				"LocationDescription", "Address", "blocklot", "block", "lot", "permit", "Status", 
+				"FoodItems", "X" , "Y","Latitude",  "Longitude", "Schedule", "dayshours", 
+				"NOISent", "Approved", "Received", "PriorPermit", "ExpirationDate", "Location",
+				"FirePreventionDistricts", "PoliceDistricts" , "PoliceDistricts" , "SupervisorDistricts" ,
+				 "ZipCodes", "Neighborhoods"});
 		
 		//this basically maps each column in the csv file to entity object
 		BeanWrapperFieldSetMapper<TruckInfo> fieldMapper = new BeanWrapperFieldSetMapper<>();

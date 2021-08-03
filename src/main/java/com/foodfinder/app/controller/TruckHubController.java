@@ -1,5 +1,6 @@
 package com.foodfinder.app.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.foodfinder.app.batch.DBWriter;
 import com.foodfinder.app.model.TruckInfo;
 import com.foodfinder.app.repository.TruckInfoRepository;
 
@@ -37,7 +39,7 @@ public class TruckHubController {
 	Job job;
 	
 	@Autowired
-	TruckInfoRepository truckInfoRepository;
+	DBWriter dbwriter;
 	
 	@GetMapping
 	@RequestMapping(value = "/truckInfo/load")
@@ -60,31 +62,55 @@ public class TruckHubController {
 	@GetMapping
 	@RequestMapping(value = "/truckInfo/locationId/{id}",method = RequestMethod.GET)
 	public TruckInfo getByID(@PathVariable("id") String id) {
-		TruckInfo info = truckInfoRepository.findByLocationId(id);
-		return info;	
+		
+		if(id.isEmpty()) return null;
+		
+		Map<String, TruckInfo> map = dbwriter.getMapByLocationId();
+		if(map.containsKey(id.toString())) {
+			TruckInfo info = map.get(id);
+			return info;
+		}
+		
+		return null;
 	}
 
 
 	@GetMapping
 	@RequestMapping(value = "/truckInfo/block/{block}",method = RequestMethod.GET)
 	public List<TruckInfo> getByBlock(@PathVariable("block") String block) {
-		List<TruckInfo> infoList= truckInfoRepository.findByBlock(block);
-		return infoList;	
+
+		if(block.isEmpty()) return null;
+		
+		List<TruckInfo> infoList= new ArrayList<TruckInfo>();
+		Map<String, List<String>> blockMap = dbwriter.getmapByBlock();
+		Map<String, TruckInfo> locationMap = dbwriter.getMapByLocationId();
+		
+		if(blockMap.containsKey(block.toString())) {
+			List<String> locationIds = blockMap.get(block.toString());
+			
+			for(String id: locationIds) {
+				TruckInfo info = locationMap.get(id.toString());
+				infoList.add(info);
+			}
+			
+		}
+		
+		return infoList;
 	}
 	
-	@GetMapping
-	@RequestMapping(value = "/truckInfo/locationIdAndType",method = RequestMethod.GET)
-	public List<TruckInfo> getByLocationIdAndTruckType(@RequestBody String locationId, String type ) {
-		List<TruckInfo> info = truckInfoRepository.findByLocationIdAndTruckType(locationId, type);
-		return info;	
-	}
 
 	
 	@PostMapping
 	@RequestMapping(value = "/truckInfo/add",method = RequestMethod.POST)
 	public String addbyTruckInfo(@RequestBody TruckInfo info) {
-		TruckInfo infoList= truckInfoRepository.save(info);
-		return infoList.getLocationid();	
+		
+		Map<String, TruckInfo> map = dbwriter.getMapByLocationId();
+		
+		if(!map.containsKey(info.getLocationid())) {
+			map.put(info.getLocationid(), info);
+		}
+		return info.getLocation();
+		
 	}
 	
 }
