@@ -4,15 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
+import org.springframework.batch.item.ItemWriter;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.stereotype.Component;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.foodfinder.app.model.TruckInfo;
 
-
+@ExtendWith(SpringExtension.class)
+@SpringBootTest
 public class DBWriterTest {
 
-	@Mock
-	private DBWriter impl;
+	@org.mockito.InjectMocks
+	private DBWriter dbwriter;
+	
 	
 	@Test
 	public void writeTest() throws Exception {
@@ -23,7 +30,7 @@ public class DBWriterTest {
 		TruckInfo info = createTruckInfo1();
 		list.add(info);
 		
-		impl.write(list);
+		dbwriter.write(list);
 	}
 	
 	private TruckInfo createTruckInfo1() {

@@ -3,7 +3,6 @@ package com.foodfinder.app.controller;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -13,13 +12,11 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.foodfinder.app.batch.DBWriter;
 import com.foodfinder.app.model.TruckInfo;
-import com.foodfinder.app.repository.TruckInfoRepository;
 
 
 
