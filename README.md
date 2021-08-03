@@ -72,15 +72,12 @@ The above problem is solved using TRUCKHUB APP.
 
 
 -	Application uses Spring Boot as its light weight and comes with its own MVC controller which is used to deploy the application.
--	H2 Database is used for in memory Database as it supports large data records and comes with its own console.
--	JPA is used as it takes care of mapping from data source to Java Objects.
+-	Data Structures(HashMap and HashSet) are used to store the data in memory.
 -	Spring Batch process is used to load the data in chunks, as data can be large.
 -	All the above are added as part of Maven dependencies in pom.xml file.
 
 
--	The input file provided is been filtered after data Analysis and the unwanted columns which might not be relevant 
-	to user(this needed more clarification on what exact columns the user might use)
-	are removed and the data is saved to `Mobile_Food_Facility_Permit_filtered.csv` to be used by the Application.
+
 -	Rest Services are created for each feature.
 -	Test cases are written in Junits to test the API.
 -	Integration testing is performed using local host and Postman to test the REST services.
@@ -89,8 +86,8 @@ The above problem is solved using TRUCKHUB APP.
 
 # Input to Application:
 	
--	The Application takes in the input CSV file (`Mobile_Food_Facility_Permit_filtered.csv`) 
-	and loads the data to the in memory H2 Database which is then used later for search services.
+-	The Application takes in the input CSV file (`Mobile_Food_Facility_Permit.csv`) 
+	and loads the data to the in memory data structures which is then used later for search services.
 	
 # Configuration Details:
 
@@ -102,16 +99,9 @@ The above problem is solved using TRUCKHUB APP.
 
 -	(spring.batch.job.enabled=true)
 	The Batch Process Job is ENABLED by Default to Load the data from CSV file to H2 DB when the Application starts.
-
-
--   (spring.h2.console.enabled=true)
-    (spring.h2.console.path=/h2-console)
-	The H2 console is ENABLED for this APP by Default so the records can be Viewed at `http://localhost:9090/h2-console`
-    after the Load().
-    User name = sa and password = password
 	
 	
--	Port(9090), Input File Location, H2 DB are all configurable parameters
+-	Port(9090), Input File Location are all configurable parameters
 
 
 # REST SERVICES:
@@ -130,9 +120,6 @@ The above problem is solved using TRUCKHUB APP.
 # Endpoint Details:
 	
 -	`http://localhost:9090`  To Access Application
-
-
--	`http://localhost:9090/h2-console`  To Access H2 Console , username=sa, password=password
 
 
 -	`http://localhost:9090/truckhub/truckInfo/load`  Load Service to load the data from CSV file to H2 database
@@ -165,12 +152,9 @@ The above problem is solved using TRUCKHUB APP.
 	It  Creates the JOB, FileItemReader , and the LineMapper Beans required for the Spring Batch Process. These beans are later used by JobLauncher in the controller file to 	launch the Batch Process Job.
 	
 
--	DbWriter.java is used to write to the H2 Db and the Processor.java is used to process any data chnages needed
-	before loading it to the H2 DB.
+-	DbWriter.java is used to write to the data structures and the Processor.java is used to process any data changes needed
+	before loading it.
 	
-
--	TruckInfoRepository.java implements the JPA Repository which is helpful in mapping datasource to Java Objects.
-
 
 -	TruckHubController.java is the Controller class which host the REST APIs. The beans are AutoWired to the controller.
 
@@ -200,13 +184,9 @@ The above problem is solved using TRUCKHUB APP.
 # Test cases using local host or postman:
 
 	Once the Application is loaded:
--	http://localhost:9090/h2-console
+-	http://localhost:9090/
 	
--	Select * from TRUCK_INFO;  - brings up all the data in the console
-
--	Select count(*) from TRUCK_INFO;	- 628 rows
-
-
+	
 # POSTMAN:
 	
 # Service:load()
@@ -269,12 +249,9 @@ The above problem is solved using TRUCKHUB APP.
 		
 		
 		
-# Enhancements/Chnages that could be done:
+# Enhancements/Changes that could be done:
 	
--	Since the H2 Database is just IN memory Data base, its high volatile, as we should be using 
-	any Relational or Non Sql Databases to store the Data.
-	
-	
+
 -	Python script or some other way to initially clean the CSV file automatically.Get the clarifications  on the exact columsn data the user might need and use that as part 	of Application
 
 
