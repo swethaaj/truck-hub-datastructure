@@ -92,13 +92,14 @@ The above problem is solved using TRUCKHUB Application.
 # Configuration Details:
 
 	APPLICATION.PROPERTIES
+	Below are the configurable parameters
 	
 -	(chunkSize =  100)
 	Since this CSV file can be huge, the Load() is a Spring Batch process which loads the data in chunks of 100 records.
 
 
 -	(spring.batch.job.enabled=true)
-	The Batch Process Job is ENABLED by Default to Load the data from CSV file to H2 DB when the Application starts.
+	The Batch Process Job is ENABLED by Default to Load the data from CSV file  when the Application starts.
 	
 	
 -	Port(9090), Input File Location are all configurable parameters
