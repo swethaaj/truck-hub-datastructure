@@ -103,6 +103,9 @@ The above problem is solved using TRUCKHUB APP.
 	
 -	Port(9090), Input File Location are all configurable parameters
 
+-	input=file:C:/Users/Swetha/eclipse-workspace/take-home-engineering-challenge-boot/src/main/resources/Mobile_Food_Facility_Permit.csv
+	This needs to be changed accordingly to refer to your absulute Path
+
 
 # REST SERVICES:
 
@@ -138,7 +141,7 @@ The above problem is solved using TRUCKHUB APP.
 	application on the local port (9090) which is configured in the application.properties.
 	
 	
--	As Part of the  above step, App loads the data from CSV file to H2 DB through a Batch process.
+-	As Part of the  above step, App loads the data from CSV file  through a Batch process.
 
 
 # Details about the APP implementation:
@@ -155,9 +158,20 @@ The above problem is solved using TRUCKHUB APP.
 -	DbWriter.java is used to write to the data structures and the Processor.java is used to process any data changes needed
 	before loading it.
 	
+	Data is stored in the 2 maps as below 
+	
+	Map<String, TruckInfo> mapByLocationID;  which stores the one to one relation from locationID to truckInfo entity.
+	
+	Map<String, Set<String>> mapByBlock;  which stores one to Many relationship from Block to LocationId.
+	
+	Data is stored this ways so its easy during retrieval process.HasetSets are used as insertion and lookup up times are constant vs ArrayList which could be linear.
 
+	
 -	TruckHubController.java is the Controller class which host the REST APIs. The beans are AutoWired to the controller.
-
+	
+	For the getByLOcationID service, this controller queries the data from the mapByLocationID and retrives the data.
+	
+	For the getByBlock service, the controller querires the data from mapByBlock and gets all the locationIds for that block and iterats obver this locationID to get the 	  	  truckInfo from mapByLocationID Map.
 
 -	TruckInfo.java	is the Entity File for the each Truck.
 
@@ -165,7 +179,7 @@ The above problem is solved using TRUCKHUB APP.
 	Package: src.test.java
 	
 -	All the JUint test files are in the respective test files.
-
+	TruckHubControllerTests is the main file.
 
 
 	Package: src.main.resources
@@ -258,7 +272,12 @@ The above problem is solved using TRUCKHUB APP.
 -	Add more test cases which could be integration test cases, which takes in CSV file as input and runs the services, no need to use post man in that case.
 
 
-- 	
+- 	Add the security features such as tructkeyStore, AAF( Authentication Implementation) for the Clients to use this.
+	
+
+-	Add the k8 implementation to deploy it onto k8 klusters etc.
+	
+	
 
 
 	
