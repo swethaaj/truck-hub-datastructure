@@ -5,8 +5,10 @@ import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -48,7 +50,7 @@ public class TruckHubControllerTests {
 	@Test
 	void findByBlockTest() {
 		Map<String, TruckInfo> info = createTruckInfoByLocationID();
-		Map<String, List<String>> blockMap =  createTruckInfoByBlock();
+		Map<String, Set<String>> blockMap =  createTruckInfoByBlock();
 		
 		when(dbwriter.getMapByLocationId()).thenReturn(info);
 		when(dbwriter.getmapByBlock()).thenReturn(blockMap);
@@ -111,9 +113,9 @@ public class TruckHubControllerTests {
 		return map;
 	}
 	
-	private Map<String, List<String>> createTruckInfoByBlock() {
-		Map<String, List<String>> blockMap = new HashMap<>();
-		List<String> list = new ArrayList<>();
+	private Map<String, Set<String>> createTruckInfoByBlock() {
+		Map<String, Set<String>> blockMap = new HashMap<>();
+		Set<String> list = new HashSet<>();
 		list.add("111");
 		list.add("222");
 		

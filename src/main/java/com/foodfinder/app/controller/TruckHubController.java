@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.Job;
@@ -82,11 +83,11 @@ public class TruckHubController {
 		if(block.isEmpty()) return null;
 		
 		List<TruckInfo> infoList= new ArrayList<TruckInfo>();
-		Map<String, List<String>> blockMap = dbwriter.getmapByBlock();
+		Map<String, Set<String>> blockMap = dbwriter.getmapByBlock();
 		Map<String, TruckInfo> locationMap = dbwriter.getMapByLocationId();
 		
 		if(blockMap.containsKey(block.toString())) {
-			List<String> locationIds = blockMap.get(block.toString());
+			Set<String> locationIds = blockMap.get(block.toString());
 			
 			for(String id: locationIds) {
 				TruckInfo info = locationMap.get(id.toString());

@@ -72,7 +72,7 @@ public class SpringBatchConfig{
 				"NOISent", "Approved", "Received", "PriorPermit", "ExpirationDate", "Location",
 				"FirePreventionDistricts", "PoliceDistricts" , "PoliceDistricts" , "SupervisorDistricts" ,
 				 "ZipCodes", "Neighborhoods"});
-		
+
 		//this basically maps each column in the csv file to entity object
 		BeanWrapperFieldSetMapper<TruckInfo> fieldMapper = new BeanWrapperFieldSetMapper<>();
 		fieldMapper.setTargetType(TruckInfo.class);
