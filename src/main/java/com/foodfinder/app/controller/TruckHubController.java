@@ -61,14 +61,15 @@ public class TruckHubController {
 	}
 	
 	@GetMapping
-	@RequestMapping(value = "/truckInfo/locationId/{id}",method = RequestMethod.GET)
-	public TruckInfo getByID(@PathVariable("id") String id) {
+	@RequestMapping(value = "/truckInfo/locationId/{locationId}",method = RequestMethod.GET)
+	public TruckInfo getByID(@PathVariable("locationId") Integer locationId) {
 		
-		if(id.isEmpty()) return null;
+//		if(id.isEmpty()) return null;
 		
-		Map<String, TruckInfo> map = dbwriter.getMapByLocationId();
-		if(map.containsKey(id.toString())) {
-			TruckInfo info = map.get(id);
+		Map<Integer, TruckInfo> map = dbwriter.getMapByLocationId();
+		
+		if(map.containsKey(locationId)) {
+			TruckInfo info = map.get(locationId);
 			return info;
 		}
 		
@@ -83,14 +84,14 @@ public class TruckHubController {
 		if(block.isEmpty()) return null;
 		
 		List<TruckInfo> infoList= new ArrayList<TruckInfo>();
-		Map<String, Set<String>> blockMap = dbwriter.getmapByBlock();
-		Map<String, TruckInfo> locationMap = dbwriter.getMapByLocationId();
+		Map<String, Set<Integer>> blockMap = dbwriter.getmapByBlock();
+		Map<Integer, TruckInfo> locationMap = dbwriter.getMapByLocationId();
 		
 		if(blockMap.containsKey(block.toString())) {
-			Set<String> locationIds = blockMap.get(block.toString());
+			Set<Integer> locationIds = blockMap.get(block.toString());
 			
-			for(String id: locationIds) {
-				TruckInfo info = locationMap.get(id.toString());
+			for(Integer id: locationIds) {
+				TruckInfo info = locationMap.get(id);
 				infoList.add(info);
 			}
 			
@@ -105,7 +106,7 @@ public class TruckHubController {
 	@RequestMapping(value = "/truckInfo/add",method = RequestMethod.POST)
 	public String addbyTruckInfo(@RequestBody TruckInfo info) {
 		
-		Map<String, TruckInfo> map = dbwriter.getMapByLocationId();
+		Map<Integer, TruckInfo> map = dbwriter.getMapByLocationId();
 		
 		if(!map.containsKey(info.getLocationid())) {
 			map.put(info.getLocationid(), info);

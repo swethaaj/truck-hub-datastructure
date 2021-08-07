@@ -35,7 +35,7 @@ public class DBWriterTest {
 	
 	private TruckInfo createTruckInfo1() {
 		TruckInfo info = new TruckInfo();
-		info.setLocationid("111");
+		info.setLocationid(111);
 		info.setAddress("555 MISSION ST");
 		info.setApplicant("Flavors of Africa");
 		info.setBlock("3721");

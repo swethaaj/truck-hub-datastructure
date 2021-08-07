@@ -10,7 +10,7 @@ import javax.persistence.Id;
 public class TruckInfo {
 	
 	@Id
-	public String locationid;
+	public Integer locationid;
 	public String Applicant;
 	public String FacilityType;
 	public String cnn;
@@ -41,10 +41,10 @@ public class TruckInfo {
 	public String ZipCodes;
 	public String Neighborhoods;
 	
-	public String getLocationid() {
+	public Integer getLocationid() {
 		return locationid;
 	}
-	public void setLocationid(String locationid) {
+	public void setLocationid(Integer locationid) {
 		this.locationid = locationid;
 	}
 	public String getApplicant() {

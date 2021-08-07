@@ -14,14 +14,14 @@ import com.foodfinder.app.model.TruckInfo;
 @Component
 public class DBWriter implements ItemWriter<TruckInfo>{
 
-	private Map<String, TruckInfo> mapByLocationID;
+	private Map<Integer, TruckInfo> mapByLocationID;
 	
-	private Map<String, Set<String>> mapByBlock;
+	private Map<String, Set<Integer>> mapByBlock;
 
 	public DBWriter() {
         System.out.println("Writer created ");
-        mapByLocationID =  new HashMap<String,TruckInfo>();
-        mapByBlock = new HashMap<String, Set<String>>();
+        mapByLocationID =  new HashMap<Integer,TruckInfo>();
+        mapByBlock = new HashMap<String, Set<Integer>>();
     }
 
 	
@@ -35,7 +35,7 @@ public class DBWriter implements ItemWriter<TruckInfo>{
 				mapByLocationID.put(data.getLocationid(), data);
 				
 				if(!mapByBlock.containsKey(data.getBlock())) {
-					mapByBlock.put(data.getBlock(), new HashSet<String>());
+					mapByBlock.put(data.getBlock(), new HashSet<Integer>());
 				}
 				mapByBlock.get(data.getBlock()).add(data.getLocationid());
 			
@@ -43,11 +43,11 @@ public class DBWriter implements ItemWriter<TruckInfo>{
 		}
 	}
 	
-	public Map<String, TruckInfo> getMapByLocationId() {
+	public Map<Integer, TruckInfo> getMapByLocationId() {
 	      return mapByLocationID;
 	 }
 	
-	public Map<String, Set<String>> getmapByBlock() {
+	public Map<String, Set<Integer>> getmapByBlock() {
 	      return mapByBlock;
 	 }
 	

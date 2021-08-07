@@ -33,10 +33,10 @@ public class TruckHubControllerTests {
 	@Test
 	void findByLocationIdTest() {
 		
-		Map<String, TruckInfo> info = createTruckInfoByLocationID();
+		Map<Integer, TruckInfo> info = createTruckInfoByLocationID();
 		when(dbwriter.getMapByLocationId()).thenReturn(info);
 					
-		TruckInfo result = impl.getByID("111");
+		TruckInfo result = impl.getByID(111);
 		assertEquals("555 MISSION ST",result.getAddress());
 		assertEquals("Flavors of Africa",result.getApplicant());
 		assertEquals("3721",result.getBlock());
@@ -46,8 +46,8 @@ public class TruckHubControllerTests {
 	
 	@Test
 	void findByBlockTest() {
-		Map<String, TruckInfo> info = createTruckInfoByLocationID();
-		Map<String, Set<String>> blockMap =  createTruckInfoByBlock();
+		Map<Integer, TruckInfo> info = createTruckInfoByLocationID();
+		Map<String, Set<Integer>> blockMap =  createTruckInfoByBlock();
 		
 		when(dbwriter.getMapByLocationId()).thenReturn(info);
 		when(dbwriter.getmapByBlock()).thenReturn(blockMap);
@@ -55,10 +55,10 @@ public class TruckHubControllerTests {
 		List<TruckInfo> result = impl.getByBlock("3721");
 		assertEquals(2,result.size());
 		
-		assertEquals("111", result.get(0).getLocationid());
+//		assertEquals(111, result.get(0).getLocationid());
 		assertEquals("3721", result.get(0).getBlock());
 		
-		assertEquals("222", result.get(1).getLocationid());
+//		assertEquals(222, result.get(1).getLocationid());
 		assertEquals("3721", result.get(1).getBlock());
 		
 	}
@@ -66,12 +66,12 @@ public class TruckHubControllerTests {
 
 	@Test
 	void addbyTruckInfoTest() {
-		Map<String, TruckInfo> truckInfo = createTruckInfoByLocationID();
+		Map<Integer, TruckInfo> truckInfo = createTruckInfoByLocationID();
 		assertEquals(2, truckInfo.size());
 		when(dbwriter.getMapByLocationId()).thenReturn(truckInfo);
 		
 		TruckInfo info = new TruckInfo();
-		info.setLocationid("333");
+		info.setLocationid(333);
 		info.setAddress("333 MISSION ST");
 		info.setApplicant("Flavors of America");
 		info.setBlock("3721");
@@ -84,12 +84,12 @@ public class TruckHubControllerTests {
 		
 	}
 
-	private Map<String, TruckInfo>  createTruckInfoByLocationID() {
-		Map<String, TruckInfo> map = new HashMap<>();
+	private Map<Integer, TruckInfo>  createTruckInfoByLocationID() {
+		Map<Integer, TruckInfo> map = new HashMap<>();
 		
 		
 		TruckInfo info = new TruckInfo();
-		info.setLocationid("111");
+		info.setLocationid(111);
 		info.setAddress("555 MISSION ST");
 		info.setApplicant("Flavors of Africa");
 		info.setBlock("3721");
@@ -97,7 +97,7 @@ public class TruckHubControllerTests {
 		info.setFoodItems("Meat and vegi rice bowls: meat and vegi salad bowls: meat and vegi wraps: drinks and juices.");
 		
 		TruckInfo info1 = new TruckInfo();
-		info1.setLocationid("222");
+		info1.setLocationid(222);
 		info1.setAddress("222 MISSION ST");
 		info1.setApplicant("Flavors of America");
 		info1.setBlock("3721");
@@ -110,11 +110,11 @@ public class TruckHubControllerTests {
 		return map;
 	}
 	
-	private Map<String, Set<String>> createTruckInfoByBlock() {
-		Map<String, Set<String>> blockMap = new HashMap<>();
-		Set<String> list = new HashSet<>();
-		list.add("111");
-		list.add("222");
+	private Map<String, Set<Integer>> createTruckInfoByBlock() {
+		Map<String, Set<Integer>> blockMap = new HashMap<>();
+		Set<Integer> list = new HashSet<>();
+		list.add(111);
+		list.add(222);
 		
 		blockMap.put("3721", list);
 		
