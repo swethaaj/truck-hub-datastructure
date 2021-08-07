@@ -64,7 +64,7 @@ public class TruckHubController {
 	@RequestMapping(value = "/truckInfo/locationId/{locationId}",method = RequestMethod.GET)
 	public TruckInfo getByID(@PathVariable("locationId") Integer locationId) {
 		
-//		if(id.isEmpty()) return null;
+		if(locationId == 0) return null;
 		
 		Map<Integer, TruckInfo> map = dbwriter.getMapByLocationId();
 		
