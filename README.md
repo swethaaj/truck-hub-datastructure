@@ -65,9 +65,9 @@ Good luck! Please send a link to your solution on Github back to us at least 12 
 
 ## 			**************** IMPLEMENTATION DETAILS: *******************
 
-The above problem is solved using TRUCKHUB APP. 
+The above problem is solved using TRUCKHUB Application. 
 
--	TRUCKHUB is an APP implemented using Java in SpringBoot Framework.
+-	TRUCKHUB is an Application implemented using Java in SpringBoot Framework.
 -	The EndPoint URL to access the Application when application is up: `http://localhost:9090/`.
 
 
@@ -92,13 +92,14 @@ The above problem is solved using TRUCKHUB APP.
 # Configuration Details:
 
 	APPLICATION.PROPERTIES
+	Below are the configurable parameters
 	
 -	(chunkSize =  100)
 	Since this CSV file can be huge, the Load() is a Spring Batch process which loads the data in chunks of 100 records.
 
 
 -	(spring.batch.job.enabled=true)
-	The Batch Process Job is ENABLED by Default to Load the data from CSV file to H2 DB when the Application starts.
+	The Batch Process Job is ENABLED by Default to Load the data from CSV file  when the Application starts.
 	
 	
 -	Port(9090), Input File Location are all configurable parameters
@@ -125,7 +126,7 @@ The above problem is solved using TRUCKHUB APP.
 -	`http://localhost:9090`  To Access Application
 
 
--	`http://localhost:9090/truckhub/truckInfo/load`  Load Service to load the data from CSV file to H2 database
+-	`http://localhost:9090/truckhub/truckInfo/load`  Load Service to load the data from CSV file and stores it in internal memory datastructures.
 
 
 -	`http://localhost:9090/truckhub/truckInfo/locationId/{id}`   Service to get the Truck Info by Location ID
@@ -275,7 +276,22 @@ The above problem is solved using TRUCKHUB APP.
 - 	Add the security features such as tructkeyStore, AAF( Authentication Implementation) for the Clients to use this.
 	
 
--	Add the k8 implementation to deploy it onto k8 klusters etc.
+-	Deploying it in containers(Kubernetes/docker image) for security purposes.
+
+
+-	Have a data base for the storing the records especially the add operation which does add it to the Map memory but will be lost when the application goes down.
+	
+	
+
+# Things I would have liked to clarify if I had gotten a chance
+	
+-	As mentioned above specific details that clients would like to see as part of response.
+	
+	
+-	Get more clarifications on the data and the mapping relationship.
+	
+	
+
 	
 	
 
