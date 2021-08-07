@@ -19,7 +19,6 @@ import com.foodfinder.app.batch.DBWriter;
 import com.foodfinder.app.model.TruckInfo;
 
 
-
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class TruckHubControllerTests {

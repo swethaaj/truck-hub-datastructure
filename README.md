@@ -161,16 +161,17 @@ The above problem is solved using TRUCKHUB Application.
 	
 	Data is stored in the 2 maps as below 
 	
-	Map<String, TruckInfo> mapByLocationID;  which stores the one to one relation from locationID to truckInfo entity.
+	Map<Integer, TruckInfo> mapByLocationID;  which stores the one to one relation from locationID to truckInfo entity.
 	
-	Map<String, Set<String>> mapByBlock;  which stores one to Many relationship from Block to LocationId.
+	Map<String, Set<Integer>> mapByBlock;  which stores one to Many relationship from Block to LocationId.
 	
-	Data is stored this ways so its easy during retrieval process.HasetSets are used as insertion and lookup up times are constant vs ArrayList which could be linear.
+	Data is stored this ways so its easy during retrieval process.
+	HasetSets are used as insertion and lookup up times are constant vs ArrayList which could be linear.
 
 	
 -	TruckHubController.java is the Controller class which host the REST APIs. The beans are AutoWired to the controller.
 	
-	For the getByLOcationID service, this controller queries the data from the mapByLocationID and retrives the data.
+	For the getByLOcationID service, this controller queries the data from the mapByLocationID and retrieves the data.
 	
 	For the getByBlock service, the controller querires the data from mapByBlock and gets all the locationIds for that block and iterats obver this locationID to get the 	  	  truckInfo from mapByLocationID Map.
 
