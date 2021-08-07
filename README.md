@@ -207,7 +207,7 @@ The above problem is solved using TRUCKHUB Application.
 	
 # Service:load()
 	
--	INPUT: http://localhost:9090/truckhub/truckInfo/load   Not needed to run explicilty as this service is Enabled by default by application
+-	INPUT: http://localhost:9090/truckhub/truckInfo/load   Not needed to run explicitly as this service is Enabled by default by application
 
 # Service:getByID()
 	
