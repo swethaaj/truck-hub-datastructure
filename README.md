@@ -156,10 +156,10 @@ The above problem is solved using TRUCKHUB Application.
 	It  Creates the JOB, FileItemReader , and the LineMapper Beans required for the Spring Batch Process. These beans are later used by JobLauncher in the controller file to 	launch the Batch Process Job.
 	
 
--	TruckHubCache.java is used to write to the data structures and the Processor.java is used to process any data changes needed
-	before loading it.
+-	TruckHubCache.java is Cache java class which exposes the public Api getMapByLocationID() and getMapByBlock() 
+    and the Processor.java is used to process any data changes needed before loading it.
 	
-	Data is stored in the 2 maps as below 
+	Data is stored in cache in 2 maps as below 
 	
 	Map<Integer, TruckInfo> mapByLocationID;  which stores the one to one relation from locationID to truckInfo entity.
 	
@@ -173,7 +173,7 @@ The above problem is solved using TRUCKHUB Application.
 	
 	For the getByLOcationID service, this controller queries the data from the mapByLocationID and retrieves the data.
 	
-	For the getByBlock service, the controller querires the data from mapByBlock and gets all the locationIds for that block and iterats obver this locationID to get the 	  	  truckInfo from mapByLocationID Map.
+	For the getByBlock service, the controller queries the data from mapByBlock and gets all the locationIds for that block and iterats obver this locationID to get the 	  	  truckInfo from mapByLocationID Map.
 
 -	TruckInfo.java	is the Entity File for the each Truck.
 
@@ -286,13 +286,9 @@ The above problem is solved using TRUCKHUB Application.
 
 # Things I would have liked to clarify if I had gotten a chance
 	
--	As mentioned above specific details that clients would like to see as part of response.
+-	As mentioned above get more specific details about the columns that clients would like to see as part of response.
 	
-	
--	Get more clarifications on the data and the mapping relationship.
 
-
-======== complexity metric
 
 	
 	
