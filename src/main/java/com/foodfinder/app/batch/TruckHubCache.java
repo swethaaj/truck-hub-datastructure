@@ -12,13 +12,12 @@ import org.springframework.stereotype.Component;
 import com.foodfinder.app.model.TruckInfo;
 
 @Component
-public class DBWriter implements ItemWriter<TruckInfo>{
+public class TruckHubCache implements ItemWriter<TruckInfo>{
 
 	private Map<Integer, TruckInfo> mapByLocationID;
-	
 	private Map<String, Set<Integer>> mapByBlock;
 
-	public DBWriter() {
+	public TruckHubCache() {
         System.out.println("Writer created ");
         mapByLocationID =  new HashMap<Integer,TruckInfo>();
         mapByBlock = new HashMap<String, Set<Integer>>();
@@ -30,6 +29,7 @@ public class DBWriter implements ItemWriter<TruckInfo>{
 	public void write(List<? extends TruckInfo> truckInfo) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println("Data saved for truckInfo" + truckInfo);
+		
 		if (truckInfo != null && truckInfo.size() > 0) {
 			for (TruckInfo data : truckInfo) {
 				mapByLocationID.put(data.getLocationid(), data);

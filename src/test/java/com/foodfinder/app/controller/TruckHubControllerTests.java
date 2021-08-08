@@ -15,7 +15,7 @@ import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.foodfinder.app.batch.DBWriter;
+import com.foodfinder.app.batch.TruckHubCache;
 import com.foodfinder.app.model.TruckInfo;
 
 
@@ -27,13 +27,13 @@ public class TruckHubControllerTests {
 	private TruckHubController impl;
 	
 	@Mock
-	DBWriter dbwriter;
+	TruckHubCache cache;
 	
 	@Test
 	void findByLocationIdTest() {
 		
 		Map<Integer, TruckInfo> info = createTruckInfoByLocationID();
-		when(dbwriter.getMapByLocationId()).thenReturn(info);
+		when(cache.getMapByLocationId()).thenReturn(info);
 					
 		TruckInfo result = impl.getByID(111);
 		assertEquals("555 MISSION ST",result.getAddress());
@@ -48,8 +48,8 @@ public class TruckHubControllerTests {
 		Map<Integer, TruckInfo> info = createTruckInfoByLocationID();
 		Map<String, Set<Integer>> blockMap =  createTruckInfoByBlock();
 		
-		when(dbwriter.getMapByLocationId()).thenReturn(info);
-		when(dbwriter.getmapByBlock()).thenReturn(blockMap);
+		when(cache.getMapByLocationId()).thenReturn(info);
+		when(cache.getmapByBlock()).thenReturn(blockMap);
 		
 		List<TruckInfo> result = impl.getByBlock("3721");
 		assertEquals(2,result.size());
@@ -67,7 +67,7 @@ public class TruckHubControllerTests {
 	void addbyTruckInfoTest() {
 		Map<Integer, TruckInfo> truckInfo = createTruckInfoByLocationID();
 		assertEquals(2, truckInfo.size());
-		when(dbwriter.getMapByLocationId()).thenReturn(truckInfo);
+		when(cache.getMapByLocationId()).thenReturn(truckInfo);
 		
 		TruckInfo info = new TruckInfo();
 		info.setLocationid(333);

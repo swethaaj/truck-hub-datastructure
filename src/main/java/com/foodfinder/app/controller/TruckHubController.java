@@ -25,9 +25,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.foodfinder.app.batch.DBWriter;
+import com.foodfinder.app.batch.TruckHubCache;
 import com.foodfinder.app.model.TruckInfo;
-import com.foodfinder.app.repository.TruckInfoRepository;
 
 @RestController
 @RequestMapping(value = "/truckhub")
@@ -40,7 +39,7 @@ public class TruckHubController {
 	Job job;
 	
 	@Autowired
-	DBWriter dbwriter;
+	TruckHubCache cache;
 	
 	@GetMapping
 	@RequestMapping(value = "/truckInfo/load")
@@ -66,7 +65,7 @@ public class TruckHubController {
 		
 		if(locationId == 0) return null;
 		
-		Map<Integer, TruckInfo> map = dbwriter.getMapByLocationId();
+		Map<Integer, TruckInfo> map = cache.getMapByLocationId();
 		
 		if(map.containsKey(locationId)) {
 			TruckInfo info = map.get(locationId);
@@ -84,8 +83,8 @@ public class TruckHubController {
 		if(block.isEmpty()) return null;
 		
 		List<TruckInfo> infoList= new ArrayList<TruckInfo>();
-		Map<String, Set<Integer>> blockMap = dbwriter.getmapByBlock();
-		Map<Integer, TruckInfo> locationMap = dbwriter.getMapByLocationId();
+		Map<String, Set<Integer>> blockMap = cache.getmapByBlock();
+		Map<Integer, TruckInfo> locationMap = cache.getMapByLocationId();
 		
 		if(blockMap.containsKey(block.toString())) {
 			Set<Integer> locationIds = blockMap.get(block.toString());
@@ -106,7 +105,7 @@ public class TruckHubController {
 	@RequestMapping(value = "/truckInfo/add",method = RequestMethod.POST)
 	public String addbyTruckInfo(@RequestBody TruckInfo info) {
 		
-		Map<Integer, TruckInfo> map = dbwriter.getMapByLocationId();
+		Map<Integer, TruckInfo> map = cache.getMapByLocationId();
 		
 		if(!map.containsKey(info.getLocationid())) {
 			map.put(info.getLocationid(), info);

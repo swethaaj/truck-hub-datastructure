@@ -110,13 +110,13 @@ The above problem is solved using TRUCKHUB Application.
 
 # REST SERVICES:
 
--	load()			: API to load the data from CSV file to H2 DB.
+-	load()			: API to load the data from CSV file to Cache.
 
 -	getByID()		: API to get the truckInfo by Location ID.
 
 -	getByBlock()	: API to get the truckInfo by Block.
 
--	addbyTruckInfo(): API to Insert the records to the H2 DB.
+-	addbyTruckInfo(): API to Insert the records to the Cache.
 
 -	getByLocationIdAndTruckType()	:Enhancement which can be done later.
 
@@ -156,7 +156,7 @@ The above problem is solved using TRUCKHUB Application.
 	It  Creates the JOB, FileItemReader , and the LineMapper Beans required for the Spring Batch Process. These beans are later used by JobLauncher in the controller file to 	launch the Batch Process Job.
 	
 
--	DbWriter.java is used to write to the data structures and the Processor.java is used to process any data changes needed
+-	TruckHubCache.java is used to write to the data structures and the Processor.java is used to process any data changes needed
 	before loading it.
 	
 	Data is stored in the 2 maps as below 
@@ -290,6 +290,10 @@ The above problem is solved using TRUCKHUB Application.
 	
 	
 -	Get more clarifications on the data and the mapping relationship.
+
+
+======== complexity metric
+
 	
 	
 
