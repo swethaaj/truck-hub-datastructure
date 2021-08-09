@@ -165,6 +165,8 @@ The above problem is solved using TRUCKHUB Application.
 	
 	Map<String, Set<Integer>> mapByBlock;  which stores one to Many relationship from Block to LocationId.
 	
+	LocationID is considered to be the primary key of the truckInfo object.
+	
 	Data is stored this ways so its easy during retrieval process.
 	HasetSets are used as insertion and lookup up times are constant vs ArrayList which could be linear.
 
@@ -268,7 +270,7 @@ The above problem is solved using TRUCKHUB Application.
 # Enhancements/Changes that could be done:
 	
 
--	Python script or some other way to initially clean the CSV file automatically.Get the clarifications  on the exact columsn data the user might need and use that as part 	of Application
+-	Python script or some other way to initially clean the CSV file automatically.Get the clarifications  on the exact columns data the user might need and use that as part 	of Application
 
 
 -	Add more test cases which could be integration test cases, which takes in CSV file as input and runs the services, no need to use post man in that case.
@@ -286,7 +288,7 @@ The above problem is solved using TRUCKHUB Application.
 
 # Things I would have liked to clarify if I had gotten a chance
 	
--	As mentioned above get more specific details about the columns that clients would like to see as part of response.
+- 	 Get more specific details about the columns that clients would like to see as part of response.
 	
 
 
