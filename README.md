@@ -137,6 +137,9 @@ The above problem is solved using TRUCKHUB Application.
 
 # Steps to Run the Application:
 
+-	Clone the project from github to your local - open it using Eclipse or IntelliJ
+	git clone https://github.com/swethaaj/truck-hub-datastructure.git
+
 -	Starting point of the Application is `TruckHubSpringBootApp.java` 
 	Run -> RunAs -> JavaApplication will bring up the
 	application on the local port (9090) which is configured in the application.properties.
