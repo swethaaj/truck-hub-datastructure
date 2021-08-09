@@ -103,14 +103,14 @@ public class TruckHubController {
 	
 	@PostMapping
 	@RequestMapping(value = "/truckInfo/add",method = RequestMethod.POST)
-	public String addbyTruckInfo(@RequestBody TruckInfo info) {
+	public Integer addbyTruckInfo(@RequestBody TruckInfo info) {
 		
 		Map<Integer, TruckInfo> map = cache.getMapByLocationId();
 		
 		if(!map.containsKey(info.getLocationid())) {
 			map.put(info.getLocationid(), info);
 		}
-		return info.getLocation();
+		return info.getLocationid();
 		
 	}
 	
