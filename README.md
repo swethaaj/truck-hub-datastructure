@@ -200,8 +200,17 @@ The above problem is solved using TRUCKHUB Application.
 
 -	.csv files		: Input files used.
 
-	
 
+# Metrics, Time Complexity
+	
+-	Loading the data from CSV to Data strcuture and Data Lookup from Data structures:
+	O(1)  - Constant look up time
+	
+# Space Complexity
+	
+-	O(n) - Linear time ,Based on Hashing for every element it store an entry set.
+	
+	
 # Test cases using local host or postman:
 
 	Once the Application is loaded:
