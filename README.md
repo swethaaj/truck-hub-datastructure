@@ -288,15 +288,21 @@ The above problem is solved using TRUCKHUB Application.
 -	Add more test cases which could be integration test cases, which takes in CSV file as input and runs the services, no need to use post man in that case.
 
 
-- 	Add the security features such as tructkeyStore, AAF( Authentication Implementation) for the Clients to use this.
+- 	Add the security features such as encrypting all the communications(https), tructkeyStore, AAF( Authentication Implementation) for the Clients to use this.
 	
 
 -	Deploying it in containers(Kubernetes/docker image) for security purposes.
 
 
 -	Have a data base for the storing the records especially the add operation which does add it to the Map memory but will be lost when the application goes down.
+	And then have internal Data cache to reduce the frequent calls to Database to increase the performance and latency.As this application is mainly driven by Data.
+	
+-	Load Balancers if needed in case of host going down.
 	
 	
+-	Internal continous health check API(promethus) to make sure the host is healthy.
+	
+		
 
 # Things I would have liked to clarify if I had gotten a chance
 	
